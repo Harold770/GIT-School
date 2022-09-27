@@ -2,7 +2,7 @@
 
 namespace GIT_School.Models
 {
-    public class StudentsModel
+    public class Students
     {
         [Key]
         public int Id { get; set; }
