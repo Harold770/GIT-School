@@ -4,7 +4,7 @@
     ViewData["Title"] = "Estudiantes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <h1>Index</h1>
 
 <p>
@@ -54,7 +54,20 @@
                 <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
             </td>
+            <td>
+                <button onclick="genPdf('@item.FirstName', '@item.LastName')">Imprimir carta de recomendacion</button>
+            </td>
         </tr>
 }
     </tbody>
 </table>
+<script type="text/javascript">
+
+function genPdf(FirstName, Lastname){
+        const { jsPDF } = window.jspdf;
+
+        const doc = new jsPDF();
+        doc.text("Hola " + FirstName, 10, 10);
+        doc.save("Carta.pdf");
+}   
+</script>
